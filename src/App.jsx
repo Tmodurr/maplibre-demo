@@ -1,71 +1,40 @@
 import React from 'react';
-import {createTheme, MantineProvider, Container, Grid, ScrollArea, Box } from '@mantine/core';
-import MapComponent from '@/components/MapComponent'
+import { createTheme, MantineProvider, Grid, Box, AppShell, Burger } from '@mantine/core';
+import AppHeader from '@/components/layout/AppHeader'
+import AppContent from './components/layout/AppContent';
+import { useDisclosure } from '@mantine/hooks';
 import '@mantine/core/styles.css';
-import './App.css'
-
-
+import './App.css';
 
 const theme = createTheme({
-  /** Your theme override here */
+  fontFamily: 'Montserrat, sans-serif',
 });
 
-
 function App() {
+
+  const [opened, { toggle }] = useDisclosure();
+
   return (
-    <>
-      <MantineProvider theme={theme}>
-        <Container
-          fluid
-          style={{
-            height: '100vh',
-            width: '100vw',
-            overflow: 'hidden', // Prevents overflow
-            display: 'flex',
-            flexDirection: 'column',
-            padding: "0px"
-          }}
-        >
-          {/* Header Bar */}
-          <Box
-            style={{
-              height: '50px',
-              backgroundColor: '#f5f5f5',
-              borderBottom: '1px solid #e0e0e0',
-              flexShrink: 0 // Fixed height
-            }}
-          >
-            Header Content
-          </Box>
-
-          {/* Main Content */}
-          <Box style={{ display: 'flex', height: '100%' , overflow: 'hidden' }}>
-            <Grid align="stretch" overflow="hidden" style={{width: '100%'}}>
-              {/* Left Column */}
-              <Grid.Col
-                span="auto"
-                style={{
-                  flexBasis: '33.33%', // 1/3 of the width
-                  maxWidth: '300px', // Maximum width limit
-                  borderRight: '1px solid #e0e0e0',
-                  overflow: 'hidden',
-                }}
-              >
-                  Left Column Content
-              </Grid.Col>
-
-              {/* Right Column */}
-              <Grid.Col
-                span="auto"
-              >
-                <MapComponent />
-              </Grid.Col>
-            </Grid>
-          </Box>
-        </Container>
-      </MantineProvider>
-    </>
-  )
+    <MantineProvider theme={theme}>
+      <AppShell
+        header={{ height: 60 }}
+        padding="md"
+      >
+        <AppShell.Header>
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            hiddenFrom="sm"
+            size="sm"
+          />
+          <div>Logo</div>
+        </AppShell.Header>
+        <AppShell.Main>
+          <AppContent />
+        </AppShell.Main>
+      </AppShell>
+    </MantineProvider>
+  );
 }
 
-export default App
+export default App;

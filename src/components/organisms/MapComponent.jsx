@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
+import classes from './MapComponent.module.css';
+
 
 const MapComponent = () => {
   const mapContainer = useRef(null);
@@ -20,10 +22,7 @@ const MapComponent = () => {
   return (
     <div
       ref={mapContainer}
-      style={{
-        width: '100%',
-        height: '100%',
-      }}
+      className={classes.mapContainer}
     />
   );
 };
