@@ -1,6 +1,8 @@
 module.exports = {
     plugins: {
-      'postcss-preset-mantine': {},
+      'postcss-preset-mantine': {
+        autoRem: true, // casts pixels to rems in all files (rems used everywhere, em in media queries)
+      },
       'postcss-simple-vars': {
         variables: {
           'mantine-breakpoint-xs': '36em',

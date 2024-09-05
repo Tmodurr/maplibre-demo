@@ -1,0 +1,9 @@
+.content__wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: oldlace;
+}
+
+.sidepane__container{
+    border: solid 1px black;
+}

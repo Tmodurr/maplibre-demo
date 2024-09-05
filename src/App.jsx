@@ -18,7 +18,8 @@ function App() {
     <MantineProvider theme={theme}>
       <AppShell
         header={{ height: 60 }}
-        padding="md"
+        padding={0}
+        style={{ height: '100%', width: '100%'}}
       >
         <AppShell.Header>
           <Burger
@@ -29,8 +30,8 @@ function App() {
           />
           <div>Logo</div>
         </AppShell.Header>
-        <AppShell.Main>
-          <AppContent />
+        <AppShell.Main style={{ height: '100%', width: '100%', paddingTop: ".5rem"}} >
+          <AppContent  />
         </AppShell.Main>
       </AppShell>
     </MantineProvider>
