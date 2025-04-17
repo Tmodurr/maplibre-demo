@@ -11,9 +11,6 @@ const theme = createTheme({
 });
 
 function App() {
-
-  const [opened, { toggle }] = useDisclosure();
-
   return (
     <MantineProvider theme={theme}>
       <AppShell
@@ -22,15 +19,9 @@ function App() {
         style={{ height: '100%', width: '100%'}}
       >
         <AppShell.Header>
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            hiddenFrom="sm"
-            size="sm"
-          />
-          <div>Logo</div>
+          <AppHeader />
         </AppShell.Header>
-        <AppShell.Main style={{ height: '100%', width: '100%', paddingTop: ".5rem"}} >
+        <AppShell.Main style={{ height: 'calc(100% - 150px)', width: '100%', paddingTop: ".5rem"}} >
           <AppContent  />
         </AppShell.Main>
       </AppShell>
